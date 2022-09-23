@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import Button from './Button';
+import React from "react";
+import styled from "styled-components";
+import Button from "./Button";
 
 const LottoForm = styled.form`
   width: 100%;
@@ -32,7 +32,7 @@ const LottoInput = styled.input`
 `;
 
 const Form = ({ price, onChangePrice, onClickLotto }) => {
-  const changePrice = e => {
+  const changePrice = (e) => {
     onChangePrice(e.target.value);
   };
 
@@ -45,7 +45,7 @@ const Form = ({ price, onChangePrice, onClickLotto }) => {
           value={price}
           step="1000"
           min="0"
-          max="100000"
+          max="10000000000"
           placeholder="금액을 입력해주세요."
           onChange={changePrice}
         />

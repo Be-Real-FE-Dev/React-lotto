@@ -1,6 +1,6 @@
-import NumberList from './NumberList';
-import Button from './Button';
-import styled from 'styled-components';
+import NumberList from "./NumberList";
+import Button from "./Button";
+import styled from "styled-components";
 
 const DimmedLayer = styled.div`
   position: fixed;
@@ -17,6 +17,12 @@ const DimmedLayer = styled.div`
     background: none;
     font-size: 20px;
   }
+
+  .restart__btn {
+    display: block;
+    width: 150px;
+    margin: 30px auto 0;
+  }
 `;
 
 const ModalBody = styled.div`
@@ -28,6 +34,12 @@ const ModalBody = styled.div`
   border-radius: 8px;
   background: #fff;
   transform: translate3d(-50%, -50%, 0);
+  height: 500px;
+  overflow-y: auto;
+
+  & > ul:nth-child(2) {
+    margin-bottom: 20px;
+  }
 `;
 
 const ModalTitle = styled.h2`
@@ -36,52 +48,33 @@ const ModalTitle = styled.h2`
   text-align: center;
 `;
 
-const SelectedList = styled.ul`
-  width: 100%;
-  margin-top: 30px;
-  border: 1px solid #ccc;
-  padding: 20px 15px;
-`;
-
-const SelectedItem = styled.li`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 30px;
-  padding: 10px;
-
-  ul {
-    padding: 0;
-    border: none;
-  }
-`;
-
-const Raking = styled.span`
-  width: 60px;
-  border-radius: 5px;
-  padding: 10px;
-  background: rgb(199, 31, 31);
-  text-align: center;
-  color: #fff;
-  font-size: 16px;
-`;
-
-const Modal = () => {
+const Modal = ({
+  lottoList,
+  winningNumbers,
+  clickRestart,
+  clickCloseModal,
+}) => {
   return (
-    <DimmedLayer>
+    <DimmedLayer onClick={clickCloseModal}>
       <ModalBody className="modal">
         <ModalTitle>당첨번호</ModalTitle>
-        <NumberList />
-        <SelectedList>
-          <SelectedItem>
-            <NumberList />
-            <Raking>등수</Raking>
-          </SelectedItem>
-        </SelectedList>
-        <Button className="close__btn" width="30px" margin="3px">
+        <NumberList result={false} lottoList={[winningNumbers]} />
+        <NumberList
+          result={true}
+          lottoList={lottoList}
+          winningNumbers={winningNumbers}
+        />
+        <Button
+          className="close__btn"
+          width="30px"
+          margin="3px"
+          onClick={clickCloseModal}
+        >
           x
         </Button>
-        <Button width="90px">다시 시작하기</Button>
+        <Button onClick={clickRestart} width="90px" className="restart__btn">
+          다시 시작하기
+        </Button>
       </ModalBody>
     </DimmedLayer>
   );

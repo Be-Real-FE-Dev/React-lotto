@@ -1,0 +1,23 @@
+.lotto-form {
+  display: flex;
+  justify-content: center;
+  /* width: 100%; */
+}
+
+.lotto-form div {
+  width: 100%;
+}
+
+.lotto-form label {
+  display: none;
+}
+
+.lotto-form input {
+  height: 40px;
+  width: 400px;
+}
+
+.lotto-form button {
+  height: 40px;
+  width: 120px;
+}

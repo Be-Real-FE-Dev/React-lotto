@@ -1,0 +1,19 @@
+.lotto-result {
+  position: relative;
+  width: 500px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}

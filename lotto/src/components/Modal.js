@@ -58,7 +58,7 @@ const Modal = ({
     <DimmedLayer onClick={clickCloseModal}>
       <ModalBody className="modal">
         <ModalTitle>당첨번호</ModalTitle>
-        <NumberList result={false} lottoList={[winningNumbers]} />
+        <NumberList lottoList={[winningNumbers]} />
         <NumberList
           result={true}
           lottoList={lottoList}

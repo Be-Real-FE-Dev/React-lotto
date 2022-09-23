@@ -45,38 +45,35 @@ const Raking = styled.li`
   margin-left: 20px;
 `;
 
-const NumberList = (props) => {
-  console.log(props);
+const NumberList = (props) => (
+  <>
+    {props.lottoList.map((items, index) => (
+      <NumberLists key={index}>
+        {items.map((item, i) => (
+          <li
+            className={`lotto-items ${
+              props.result && props.winningNumbers.includes(item)
+                ? "winning-ball"
+                : ""
+            }`}
+            key={i}
+          >
+            {item}
+          </li>
+        ))}
+        {props.result && (
+          <Raking>
+            {items.filter((item) => props.winningNumbers.includes(item))
+              .length < 3
+              ? "꽝"
+              : 8 -
+                items.filter((item) => props.winningNumbers.includes(item))
+                  .length}
+          </Raking>
+        )}
+      </NumberLists>
+    ))}
+  </>
+);
 
-  return (
-    <>
-      {props.lottoList.map((items, index) => (
-        <NumberLists key={index}>
-          {items.map((item, i) => (
-            <li
-              className={`lotto-items ${
-                props.result && props.winningNumbers.includes(item)
-                  ? "winning-ball"
-                  : ""
-              }`}
-              key={i}
-            >
-              {item}
-            </li>
-          ))}
-          {props.result && (
-            <Raking>
-              {items.filter((item) => props.winningNumbers.includes(item))
-                .length < 3
-                ? "꽝"
-                : 8 -
-                  items.filter((item) => props.winningNumbers.includes(item))
-                    .length}
-            </Raking>
-          )}
-        </NumberLists>
-      ))}
-    </>
-  );
-};
 export default NumberList;

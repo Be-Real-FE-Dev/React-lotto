@@ -37,13 +37,9 @@ function App() {
     41, 42, 43, 44, 45,
   ];
 
-  const changePriceHandler = (newPrice) => {
-    setPrice(newPrice);
-  };
+  const changePriceHandler = (newPrice) => setPrice(newPrice);
 
-  const shuffle = (array) => {
-    return array.sort(() => Math.random() - 0.5);
-  };
+  const shuffle = (array) => array.sort(() => Math.random() - 0.5);
 
   const clickLottoHandler = (e) => {
     e.preventDefault();
@@ -51,15 +47,14 @@ function App() {
     const lottoArrayNum = price / 1000;
 
     setLottoList(
-      new Array(lottoArrayNum).fill(0).map(() => {
-        const temp = shuffle(LOTTONUM).filter((x, i) => i < 7);
-        return temp;
-      })
+      new Array(lottoArrayNum)
+        .fill(0)
+        .map(() => shuffle(LOTTONUM).filter((_, i) => i < 7))
     );
   };
 
   const clickResultHanlder = () => {
-    if (price === 0) return;
+    if (lottoList.length === 0) return;
     const temp = shuffle(LOTTONUM).filter((x, i) => i < 7);
     setWinningNumbers(temp);
     setIsOpenModal(true);

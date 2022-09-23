@@ -1,0 +1,12 @@
+.winBalls {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.winBalls .plus {
+  /* margin-left: 20px; */
+  margin-right: 10px;
+  font-size: 20px;
+  /* font-weight: 0; */
+}

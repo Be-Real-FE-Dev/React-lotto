@@ -1,0 +1,7 @@
+.lotto-item {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: 700;
+}

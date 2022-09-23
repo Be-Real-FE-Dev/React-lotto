@@ -1,0 +1,9 @@
+.lotto-container {
+  margin: 0 auto;
+  width: 680px;
+}
+
+.lotto-list {
+  /* display: flex; */
+  width: 100%;
+}

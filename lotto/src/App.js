@@ -31,11 +31,7 @@ function App() {
   const [lottoList, setLottoList] = useState([]);
   const [winningNumbers, setWinningNumbers] = useState([]);
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const LOTTONUM = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
-    22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
-    41, 42, 43, 44, 45,
-  ];
+  const LOTTONUM = Array.from({ length: 45 }, (_, i) => i + 1);
 
   const changePriceHandler = (newPrice) => setPrice(newPrice);
 
@@ -47,15 +43,19 @@ function App() {
     const lottoArrayNum = price / 1000;
 
     setLottoList(
-      new Array(lottoArrayNum)
-        .fill(0)
-        .map(() => shuffle(LOTTONUM).filter((_, i) => i < 7))
+      new Array(lottoArrayNum).fill(0).map(() =>
+        shuffle(LOTTONUM)
+          .filter((_, i) => i < 7)
+          .sort((a, b) => a - b)
+      )
     );
   };
 
   const clickResultHanlder = () => {
     if (lottoList.length === 0) return;
-    const temp = shuffle(LOTTONUM).filter((x, i) => i < 7);
+    const temp = shuffle(LOTTONUM)
+      .filter((x, i) => i < 7)
+      .sort((a, b) => a - b);
     setWinningNumbers(temp);
     setIsOpenModal(true);
   };
